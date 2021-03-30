@@ -1,6 +1,12 @@
 const express = require('express')
 const userRouter = require('../activity/app/router/userRouter');
+const homeRouter = require('../activity/app/router/homeRouter');
+const path  =  require('path'); 
 const app = express()
+
+
+app.use('/api/v1/static', express.static(path.join(__dirname, 'public')))
+console.log(path.join(__dirname, 'public'))
 
 app.use(express.json())
 
@@ -18,6 +24,8 @@ app.get('/', function (req, res) {
 
 
 app.use("/api/v1/user", userRouter);
+
+app.use("/api/v1", homeRouter);
 
 
 // app.use("/api/v1/post", postRouter)

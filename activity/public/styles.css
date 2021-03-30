@@ -1,0 +1,6 @@
+.content_container{
+    background: grey;
+}
+.profile_container{
+    display: flex;
+}

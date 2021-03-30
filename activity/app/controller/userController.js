@@ -1,11 +1,6 @@
 const userModel = require('../model/userModel');
-// const { uuid } = require('uuidv4');
-// const fs = require('fs')
-// const path = require('path')
-// var userDB = require('../db/user.json');
-var arr = __dirname.split('/');
-arr.pop();
-// var path1  = arr.join('/');
+
+
 
 const getAllUser = async(req,res) =>{
     try{
