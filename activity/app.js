@@ -8,11 +8,7 @@ app.use(express.json())
 app.get('/', function (req, res) {
   res.end('<h1>this app heading</h1>')
 })
-
-
-   
-
-
+// waheguru
 //jksdfds; kdsfgdsk fjksdbfds fksdbfjds fjksdbfds, fdsbfdskf dslbfs
 // app.get('/users',getAllUser); // get all user
 // app.get('/user/:id', getUser); //get user
