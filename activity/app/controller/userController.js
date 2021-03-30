@@ -1,11 +1,11 @@
 const userModel = require('../model/userModel');
-const { uuid } = require('uuidv4');
-const fs = require('fs')
-const path = require('path')
-var userDB = require('../db/user.json');
+// const { uuid } = require('uuidv4');
+// const fs = require('fs')
+// const path = require('path')
+// var userDB = require('../db/user.json');
 var arr = __dirname.split('/');
 arr.pop();
-var path1  = arr.join('/');
+// var path1  = arr.join('/');
 
 const getAllUser = async(req,res) =>{
     try{
@@ -92,9 +92,26 @@ const deleteUser = async(req,res) =>{
         })
     }
 }
-
+const friendRequest = async(req,res) =>{
+    try{
+        let user_id = req.body.uid
+        let follower_id = req.params.follower_id;
+        let user = await userModel.createRequest(user_id,follower_id)
+        res.status(201).json({
+            status: "request sent",
+            user: user
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            status: "request not sent",
+            "message": err.message
+        })
+    }
+}
 module.exports.getAllUser = getAllUser;
 module.exports.getUser = getUser;
 module.exports.createUser = createUser;
 module.exports.updateUser = updateUser;
 module.exports.deleteUser = deleteUser;
+module.exports.friendRequest = friendRequest;
