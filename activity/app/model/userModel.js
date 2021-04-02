@@ -79,21 +79,34 @@ let updateById = (userOBJ,userId) => {
 }
 
 
-let createRequest = (userId,followerId) => {
+let createRequest = (userId,followerId,is_public) => {
     return new Promise(function (resolve, reject) {
-        connection.query(`INSERT INTO user_follower SET user_id = "${userId}" , follower_id = "${followerId}"` ,function (err, res) {
-            if (err) {
-                reject(err)
-                return;
-            } else {
-                resolve(res);
-            }
-        })
+        if(is_public === 1){
+            connection.query(`INSERT INTO user_follower SET user_id = "${userId}" , follower_id = "${followerId}" , is_accepted = true` ,function (err, res) {
+                if (err) {
+                    reject(err)
+                    return;
+                } else {
+                    resolve(res);
+                }
+            })
+        }
+        else{
+            connection.query(`INSERT INTO user_follower SET user_id = "${userId}" , follower_id = "${followerId}"` ,function (err, res) {
+                if (err) {
+                    reject(err)
+                    return;
+                } else {
+                    resolve(res);
+                }
+            })
+        }
     })
 }
 
 let requestAccept = (userId,followerId) => {
     return new Promise(function (resolve, reject) {
+       
         connection.query(`UPDATE user_follower SET is_accepted = true WHERE user_id = "${userId}" AND follower_id = "${followerId}"` ,function (err, res) {
             if (err) {
                 reject(err)
@@ -105,8 +118,20 @@ let requestAccept = (userId,followerId) => {
     })
 }
 
+let getUsersFollowers = (userId) => {
+    return new Promise(function (resolve, reject) {
+        connection.query(`SELECT follower_id FROM user_follower WHERE user_id = "${userId}"` ,function (err, res) {
+            if (err) {
+                reject(err)
+                return;
+            } else {
+                resolve(res);
+            }
+        })
+    })
+}
 
-
+// getAllFollowers
 // createRequest
 module.exports.createRequest = createRequest;
 module.exports.create = create;
@@ -115,4 +140,5 @@ module.exports.getAllUser = getAllUser;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 module.exports.requestAccept = requestAccept;
+module.exports.getUsersFollowers = getUsersFollowers;
 

@@ -15,3 +15,9 @@ is_accepted Boolean DEFAULT false,
 PRIMARY KEY (user_id, follower_id),
 INDEX (user_id)
 );
+CREATE TABLE IF NOT EXISTS user_following
+(user_id VARCHAR(255)  NOT NULL ,
+follower_id VARCHAR(255) NOT NULL,
+PRIMARY KEY (user_id, follower_id),
+INDEX (user_id)
+);
