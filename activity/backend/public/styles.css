@@ -1,0 +1,22 @@
+.content_container{
+    background: grey;
+}
+.profile_container{
+    display: flex;
+}
+input {
+    height: 24px;
+    margin-left: 369px;
+    width: 280px;
+}
+button{
+    height: 32px;
+}
+.profile_container{
+    display : flex;
+    justify-content: space-around;
+}
+h3{
+    text-align : center;
+}
+
