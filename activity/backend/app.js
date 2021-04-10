@@ -1,6 +1,6 @@
 const express = require('express')
-const userRouter = require('../activity/app/router/userRouter');
-const homeRouter = require('../activity/app/router/homeRouter');
+const userRouter = require('../backend/app/router/userRouter');
+const homeRouter = require('../backend/app/router/homeRouter');
 const path  =  require('path'); 
 const app = express()
 
@@ -30,7 +30,7 @@ app.use("/api/v1", homeRouter);
 
 // app.use("/api/v1/post", postRouter)
 
-app.listen(3000,()=>{      
+app.listen(4000,()=>{      
     console.log('server is running');
 
 })

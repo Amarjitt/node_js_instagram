@@ -1,5 +1,5 @@
 var mysql = require('mysql')
-const { user , dbPassword , dbName} = require('../config/secrets.json');
+const { user , dbPassword , dbName} = require('../../config/secrets.json');
 var connection = mysql.createConnection({
   host: 'localhost',
   user: user,
