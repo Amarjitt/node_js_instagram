@@ -7,7 +7,6 @@ const app = express()
 
 app.use('/api/v1/static', express.static(path.join(__dirname, 'public')))
 // console.log(path.join(__dirname, 'public'))
-
 app.use(express.json())
 
  
